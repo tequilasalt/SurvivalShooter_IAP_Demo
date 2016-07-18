@@ -158,7 +158,7 @@ PlayerSettings:
   AndroidTargetDevice: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: C:/Users/tequila/Desktop/SurvivalShooter_IAP_Demo/IAP.keystore
+  AndroidKeystoreName: C:/Users/tequila/Documents/GitHub/SurvivalShooter_IAP_Demo/IAP.keystore
   AndroidKeyaliasName: iap
   AndroidTVCompatibility: 1
   AndroidIsGame: 1

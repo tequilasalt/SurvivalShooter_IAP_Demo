@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Purchasing;
+using UnityEngine.Purchasing.Security;
 
 // Placing the Purchaser class in the CompleteProject namespace allows it to interact with ScoreManager, 
 // one of the existing Survival Shooter scripts.
@@ -71,6 +72,7 @@ namespace CompleteProject {
 
         private bool IsInitialized() {
             // Only say we are initialized if both the Purchasing references are set.
+            
             return m_StoreController != null && m_StoreExtensionProvider != null;
         }
 
@@ -173,6 +175,12 @@ namespace CompleteProject {
             m_StoreController = controller;
             // Store specific subsystem, for accessing device-specific store features.
             m_StoreExtensionProvider = extensions;
+
+            foreach (var product in m_StoreController.products.all) {
+                
+                Debug.Log(product.metadata.isoCurrencyCode+":"+ product.metadata.localizedPriceString+":"+product.metadata.localizedPrice);
+
+            }
         }
 
 
@@ -183,6 +191,12 @@ namespace CompleteProject {
 
 
         public PurchaseProcessingResult ProcessPurchase(PurchaseEventArgs args) {
+
+            /*Debug.Log(args.purchasedProduct.transactionID+":"+args.purchasedProduct.receipt+":"+args.purchasedProduct);
+
+            GooglePlayReceipt s;
+            s.*/
+
             // A consumable product has been purchased by this user.
             if (String.Equals(args.purchasedProduct.definition.id, kProductIDConsumable, StringComparison.Ordinal)) {
                 Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));
